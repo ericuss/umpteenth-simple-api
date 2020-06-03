@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  simple.api:
+    image: ${DOCKER_REGISTRY-}simpleapi
+    build:
+      context: .
+      dockerfile: Src/Clients/Simple.Api/Dockerfile

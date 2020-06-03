@@ -1,0 +1,75 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!--
+			CS1573: Parameter 'parameter' has no matching param tag in the XML comment for 'parameter' (but other parameters do)
+			CS1591: Missing XML comment for publicly visible type or member 'Type_or_Member'
+			CS1712: Type parameter 'type parameter' has no matching typeparam tag in the XML comment on 'type' (but other type parameters do)
+		-->
+    <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
+    <NoWarn>$(NoWarn),1573,1591,1712, SA1309 </NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.tests.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
+    <DotNetCliToolReference Include="dotnet-reportgenerator-cli" Version="4.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="3.1.4" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TestStack.BDDfy" Version="4.3.2" />
+    <PackageReference Include="MartinCostello.Logging.XUnit" Version="0.1.0" />
+    <PackageReference Include="MartinCostello.Logging.XUnit" Version="0.1.0" />
+    <PackageReference Include="AutoFixture" Version="4.11.0" />
+    <PackageReference Include="coverlet.msbuild" Version="2.9.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="1.3.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="FluentAssertions" Version="5.10.3" />
+    <PackageReference Include="MediatR" Version="8.0.1" />
+    <PackageReference Include="Moq" Version="4.14.1" />
+    <PackageReference Include="Moq.EntityFrameworkCore" Version="3.1.2.1" />
+    <PackageReference Include="Respawn" Version="3.3.0" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="All" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\_configuration\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.tests.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Clients\Simple.Api\Simple.Api.csproj" />
+  </ItemGroup>
+
+</Project>

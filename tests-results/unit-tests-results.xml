@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="3524d5d2-1e0e-4dfa-9400-32c0d6808188" name="@c6973d1fd9c5 2020-06-03 16:51:32" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2020-06-03T16:51:32.8195981+00:00" queuing="2020-06-03T16:51:32.8195982+00:00" start="2020-06-03T16:51:30.1593409+00:00" finish="2020-06-03T16:51:32.8422993+00:00" />
+  <TestSettings name="default" id="b7ccda97-84b8-42b5-a9b6-e073f2ef80d2">
+    <Deployment runDeploymentRoot="_c6973d1fd9c5_2020-06-03_16_51_32" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="897c1b0a-1603-48d1-a1c4-85837529afdd" testId="c2d286a3-7124-74d9-0a08-05fca3a1aa22" testName="Simple.UnitTests.UnitTest1.Test1" computerName="c6973d1fd9c5" duration="00:00:00.0036828" startTime="2020-06-03T16:51:32.6507004+00:00" endTime="2020-06-03T16:51:32.6508446+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="897c1b0a-1603-48d1-a1c4-85837529afdd" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Simple.UnitTests.UnitTest1.Test1" storage="/src/src/tests/simple.unittests/bin/debug/netcoreapp3.1/simple.unittests.dll" id="c2d286a3-7124-74d9-0a08-05fca3a1aa22">
+      <Execution id="897c1b0a-1603-48d1-a1c4-85837529afdd" />
+      <TestMethod codeBase="/src/Src/Tests/Simple.UnitTests/bin/Debug/netcoreapp3.1/Simple.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Simple.UnitTests.UnitTest1" name="Test1" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="c2d286a3-7124-74d9-0a08-05fca3a1aa22" executionId="897c1b0a-1603-48d1-a1c4-85837529afdd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.4.0 (64-bit .NET Core 3.1.4)
+[xUnit.net 00:00:00.55]   Discovering: Simple.UnitTests
+[xUnit.net 00:00:00.61]   Discovered:  Simple.UnitTests
+[xUnit.net 00:00:00.61]   Starting:    Simple.UnitTests
+[xUnit.net 00:00:00.73]   Finished:    Simple.UnitTests
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

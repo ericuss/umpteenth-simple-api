@@ -1,0 +1,40 @@
+version: '3.4'
+
+services:
+  data-tests:
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "5433:1433"  
+  # unit-tests:
+  #   entrypoint:
+  #       - dotnet
+  #       - test
+  #       - --logger
+  #       - trx;LogFileName=/tests/unit-tests-results.xml
+  #   volumes: 
+  #     - ${BUILD_ARTIFACTSTAGINGDIRECTORY:-./tests-results/}:/tests
+  unit-tests:
+    # environment:
+    #   - ConnectionStrings__InnovationDemos=Server=data-tests;Initial Catalog=InnovationDemoDb;Persist Security Info=False;User ID=sa;Password=Pass@word;MultipleActiveResultSets=False;Encrypt=false;TrustServerCertificate=False;Connection Timeout=30;
+    entrypoint:
+        - dotnet
+        - test
+        - --logger
+        - trx;LogFileName=/tests/unit-tests-results.xml
+    volumes: 
+      - ${BUILD_ARTIFACTSTAGINGDIRECTORY:-./tests-results/}:/tests
+  integration-tests:
+    # environment:
+    #   - ConnectionStrings__InnovationDemos=Server=data-tests;Initial Catalog=InnovationDemoDb;Persist Security Info=False;User ID=sa;Password=Pass@word;MultipleActiveResultSets=False;Encrypt=false;TrustServerCertificate=False;Connection Timeout=30;
+    entrypoint:
+        - dotnet
+        - test
+        - --logger
+        - trx;LogFileName=/tests/integration-tests-results.xml
+    volumes: 
+      - ${BUILD_ARTIFACTSTAGINGDIRECTORY:-./tests-results/}:/tests
+    depends_on:
+      - data-tests
+  

@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  data-tests:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+  unit-tests:
+    image: ${DOCKER_REGISTRY-}/simple-unit-test:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: Src/Tests/Simple.UnitTests/Dockerfile
+      target: unittests
+  integration-tests:
+    image: ${DOCKER_REGISTRY-}/simple-integration-test:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: Src/Tests/Simple.IntegrationTests/Dockerfile
+      target: integrationtests
