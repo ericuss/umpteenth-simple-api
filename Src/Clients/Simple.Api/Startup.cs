@@ -47,7 +47,8 @@ namespace Simple.Api
                 .AddCustomHttps(httpsPort, this._env)
                 .AddHttpContextAccessor()
                 .AddMvcCore()
-                .AddApiExplorer()
+                    .AddApiExplorer()
+                    .AddNewtonsoftJson()
                 .Services
                 .RegisterDataServices(database.LibraryConnectionString, database.ApplyMigrations, this._env)
                 ; // string connectionString, bool migrate, IHostEnvironment env

@@ -6,6 +6,7 @@ namespace Simple.Api
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Hosting;
     using Serilog;
+    using Simple.Data.SeedData;
 
     public class Program
     {
@@ -13,8 +14,8 @@ namespace Simple.Api
         {
             var build = CreateHostBuilder(args).Build();
 
-            // var services = build.Services;
-            // SeedDataApplier.Apply(services).Wait();
+            var services = build.Services;
+            SeedDataApplier.Apply(services).Wait();
             build.Run();
         }
 

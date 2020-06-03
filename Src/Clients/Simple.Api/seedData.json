@@ -1,0 +1,12 @@
+{
+  "Books": [
+    {
+      "Id": "b0bdb4d4-762a-4e50-a5de-1f8c37c85379",
+      "Name": "book 1"
+    },
+    {
+      "Id": "c91727bc-6846-4064-ac30-a0a5e5bbb19f",
+      "Name": "book 2"
+    }
+  ]
+}
