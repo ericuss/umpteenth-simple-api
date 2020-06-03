@@ -7,7 +7,7 @@ namespace Simple.Infrastructure.ControllersCore
 
     [ApiController]
     [Produces("application/json")]
-    [Route("api/[controller]")]
+    [Route("api/v{v:apiVersion}/[controller]")]
     [ValidateModel]
     //[Authorize]
     public abstract class ControllerCore : ControllerBase

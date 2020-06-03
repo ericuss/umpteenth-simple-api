@@ -11,6 +11,7 @@ namespace Simple.Api.Controllers
     using Simple.Infrastructure.ControllersCore;
     using Simple.Infrastructure.Repository;
 
+    [ApiVersion("1.0")]
     public class BooksController : ControllerCore
     {
         private readonly IRepositoryReadOnly<Book, Guid> _repository;

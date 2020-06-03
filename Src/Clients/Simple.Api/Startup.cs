@@ -46,6 +46,7 @@ namespace Simple.Api
                 .AddCustomFixForHttps()
                 .AddCustomHttps(httpsPort, this._env)
                 .AddHttpContextAccessor()
+                .AddCustomApiVersion()
                 .AddMvcCore()
                     .AddApiExplorer()
                     .AddNewtonsoftJson()
