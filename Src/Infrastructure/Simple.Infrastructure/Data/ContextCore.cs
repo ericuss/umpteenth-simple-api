@@ -14,6 +14,10 @@ namespace Simple.Infrastructure.Data
     {
         private readonly IHostEnvironment _env;
 
+        protected ContextCore(DbContextOptions options)
+            : this(options, null)
+        {
+        }
         protected ContextCore(DbContextOptions options, IHostEnvironment env)
             : base(options)
         {
@@ -76,7 +80,7 @@ namespace Simple.Infrastructure.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (this._env.IsDevelopment())
+            if (this._env?.IsDevelopment() == true)
             {
                 optionsBuilder.EnableSensitiveDataLogging();
             }

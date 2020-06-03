@@ -8,7 +8,9 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["Src/Clients/Simple.Api/Simple.Api.csproj", "Src/Clients/Simple.Api/"]
-COPY ["Src/Infrastructure/Simple.Infrastructure.csproj", "Src/Infrastructure/Simple.Infrastructure/"]
+COPY ["Src/Infrastructure/Simple.Infrastructure/Simple.Infrastructure.csproj", "Src/Infrastructure/Simple.Infrastructure/"]
+COPY ["Src/Domain/Simple.Domain/Simple.Domain.csproj", "Src/Domain/Simple.Domain/"]
+COPY ["Src/Data/Simple.Data/Simple.Data.csproj", "Src/Data/Simple.Data/"]
 RUN dotnet restore "Src/Clients/Simple.Api/Simple.Api.csproj"
 COPY . .
 WORKDIR "/src/Src/Clients/Simple.Api"
