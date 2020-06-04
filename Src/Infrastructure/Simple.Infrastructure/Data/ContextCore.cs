@@ -6,7 +6,6 @@ namespace Simple.Infrastructure.Data
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using Simple.Infrastructure.Entities;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Hosting;
 
@@ -50,18 +49,8 @@ namespace Simple.Infrastructure.Data
 
         protected void UpdateTimestampOfEntities()
         {
-            const string ModificationProperty = "Modification";
-
-            var entries = this.ChangeTracker.Entries().Where(p =>
-                                                            p.State == EntityState.Modified
-                                                            && p.Entity.GetType().Assembly.DefinedTypes.Any(x => typeof(IModificationDate).IsAssignableFrom(x)));
-            foreach (var entry in entries)
-            {
-                if (entry.Metadata.FindProperty(ModificationProperty) != null)
-                {
-                    entry.Property(ModificationProperty).CurrentValue = DateTimeOffset.UtcNow;
-                }
-            }
+            this.ChangeTracker.UpdateCreationDate();
+            this.ChangeTracker.UpdateTimestamp();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

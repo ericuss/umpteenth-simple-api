@@ -4,6 +4,6 @@
 
     public interface IModificationDate
     {
-        public DateTimeOffset Modification { get; }
+        public DateTimeOffset Modified { get; }
     }
 }

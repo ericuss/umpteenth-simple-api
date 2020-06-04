@@ -1,11 +1,12 @@
 // Copyright (c) simple. All rights reserved.
+
 namespace Simple.Domain.Entities.Books
 {
     using System;
     using CSharpFunctionalExtensions;
     using Simple.Infrastructure.Entities;
 
-    public class Book : AggregateRoot<Guid>, IModificationDate
+    public class Book : AggregateRoot<Guid>, ICreationDate, IModificationDate
     {
         private Book()
             : base()
@@ -14,7 +15,7 @@ namespace Simple.Domain.Entities.Books
 
         public string Name { get; private set; }
 
-        public DateTimeOffset Modification { get; private set; }
+        public DateTimeOffset Modified { get; private set; }
 
         public DateTimeOffset Created { get; private set; }
 
@@ -56,9 +57,6 @@ namespace Simple.Domain.Entities.Books
 
         private static Result<Book> Create(Book bookToBeCreated, string name)
         {
-            bookToBeCreated.Modification = DateTimeOffset.Now;
-            bookToBeCreated.Created = DateTimeOffset.Now;
-
             var constraints = Result.Combine(
                 bookToBeCreated.SetName(name));
 
