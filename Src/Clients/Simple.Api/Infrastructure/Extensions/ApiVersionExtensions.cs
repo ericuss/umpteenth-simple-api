@@ -1,4 +1,4 @@
-// Copyright (c) Lanre. All rights reserved.
+// Copyright (c) simple. All rights reserved.
 
 namespace Microsoft.Extensions.DependencyInjection
 {

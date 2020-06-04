@@ -10,7 +10,7 @@ using Simple.Data.Contexts;
 namespace Simple.Data.Contexts.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20200603215151_Initial")]
+    [Migration("20200604094032_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,7 +30,7 @@ namespace Simple.Data.Contexts.Migrations
                     b.Property<DateTimeOffset>("Created")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<DateTimeOffset>("Modification")
+                    b.Property<DateTimeOffset>("Modified")
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Name")

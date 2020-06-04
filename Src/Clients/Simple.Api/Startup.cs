@@ -2,12 +2,14 @@
 
 namespace Simple.Api
 {
+    using System.Reflection;
+    using MediatR;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using Simple.Application.Queries.GetBooks;
     using Simple.Data;
     using Simple.Infrastructure.Entities.Settings;
 
@@ -32,15 +34,8 @@ namespace Simple.Api
             var (database, httpsPort, applicationInsightsKey) = this.RegisterConfigurations(services);
 
             services
-
-                // .AddMediatR(Assembly.GetAssembly(typeof(GetDemosQuery)), Assembly.GetAssembly(typeof(CreateDemoCommand)), Assembly.GetAssembly(typeof(GetStateDemoQuery)))
-                // .AddLogging(builder =>
-                // {
-                //     builder.AddApplicationInsights(this._configuration.GetValue<string>("ApplicationInsights:InstrumentationKey"));
-                //     builder.AddFilter<ApplicationInsightsLoggerProvider>(string.Empty, LogLevel.Information);
-                // })
-                .AddApplicationInsightsTelemetry(x =>
-                    x.InstrumentationKey = applicationInsightsKey)
+                .AddMediatR(Assembly.GetAssembly(typeof(GetBooksQuery)))
+                .AddApplicationInsightsTelemetry(x => x.InstrumentationKey = applicationInsightsKey)
                 .AddCustomHealthChecks()
                 .AddCustomSwagger()
                 .AddCustomFixForHttps()
@@ -50,9 +45,9 @@ namespace Simple.Api
                 .AddMvcCore()
                     .AddApiExplorer()
                     .AddNewtonsoftJson()
-                .Services
+                    .Services
                 .RegisterDataServices(database.LibraryConnectionString, database.ApplyMigrations, this._env)
-                ; // string connectionString, bool migrate, IHostEnvironment env
+                ;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

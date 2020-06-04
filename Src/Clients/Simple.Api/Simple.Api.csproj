@@ -66,6 +66,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Application\Simple.Application\Simple.Application.csproj" />
     <ProjectReference Include="..\..\Data\Simple.Data\Simple.Data.csproj" />
     <ProjectReference Include="..\..\Domain\Simple.Domain\Simple.Domain.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Simple.Infrastructure\Simple.Infrastructure.csproj" />

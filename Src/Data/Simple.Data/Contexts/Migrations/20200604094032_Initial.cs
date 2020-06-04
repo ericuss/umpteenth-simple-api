@@ -13,7 +13,7 @@ namespace Simple.Data.Contexts.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: false),
-                    Modification = table.Column<DateTimeOffset>(nullable: false),
+                    Modified = table.Column<DateTimeOffset>(nullable: false),
                     Created = table.Column<DateTimeOffset>(nullable: false)
                 },
                 constraints: table =>

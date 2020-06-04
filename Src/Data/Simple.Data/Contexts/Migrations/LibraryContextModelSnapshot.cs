@@ -28,7 +28,7 @@ namespace Simple.Data.Contexts.Migrations
                     b.Property<DateTimeOffset>("Created")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<DateTimeOffset>("Modification")
+                    b.Property<DateTimeOffset>("Modified")
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Name")

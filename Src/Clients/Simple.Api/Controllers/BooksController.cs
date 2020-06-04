@@ -2,31 +2,53 @@
 
 namespace Simple.Api.Controllers
 {
-    using System;
-    using System.Linq;
     using System.Threading.Tasks;
+    using MediatR;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using Simple.Domain.Entities.Books;
+    using Microsoft.Extensions.Hosting;
+    using Simple.Application.Commands.BookCommand;
+    using Simple.Application.Queries.GetBooks;
     using Simple.Infrastructure.ControllersCore;
-    using Simple.Infrastructure.Repository;
 
     [ApiVersion("1.0")]
+    [AllowAnonymous]
     public class BooksController : ControllerCore
     {
-        private readonly IRepositoryReadOnly<Book, Guid> _repository;
+        private readonly IMediator _mediator;
+        private readonly IHostEnvironment _env;
 
-        public BooksController(IRepositoryReadOnly<Book, Guid> repository)
+        public BooksController(IMediator mediator, IHostEnvironment env)
         {
-            this._repository = repository;
+            this._mediator = mediator;
+            this._env = env;
         }
 
         [HttpGet]
-        [AllowAnonymous]
         public async Task<IActionResult> Get()
         {
-            var books = await this._repository.GetAsync();
-            return this.Ok(books.ToList());
+            var books = await this._mediator.Send(new GetBooksQuery());
+
+            if (books.IsFailure)
+            {
+                return this.BadRequest(this._env.IsDevelopment() ? books.Error : string.Empty);
+            }
+
+            return this.Ok(books.Value);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post()
+        {
+            // apply fluent validation
+            var books = await this._mediator.Send(new CreateBookCommand());
+
+            if (books.IsFailure)
+            {
+                return this.BadRequest(this._env.IsDevelopment() ? books.Error : string.Empty);
+            }
+
+            return this.Ok(books.Value);
         }
     }
 }
