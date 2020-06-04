@@ -1,6 +1,6 @@
 // Copyright (c) Simple. All rights reserved.
 
-namespace Simple.Infrastructure.Data
+namespace Simple.Infrastructure.Data.UpdateEntries
 {
     using System;
     using System.Linq;

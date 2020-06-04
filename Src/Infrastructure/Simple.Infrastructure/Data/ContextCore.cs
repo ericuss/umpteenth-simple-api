@@ -8,6 +8,7 @@ namespace Simple.Infrastructure.Data
     using System.Threading.Tasks;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Hosting;
+    using Simple.Infrastructure.Data.UpdateEntries;
 
     public abstract class ContextCore : DbContext
     {
